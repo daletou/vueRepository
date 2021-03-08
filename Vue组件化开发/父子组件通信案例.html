@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :number1="num1" :number2="num2" @number1change="num1change" @number2change="num2change"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>props:{{number1}}</h2>
+      <h2>data:{{dnumber1}}</h2>
+      <input type="text" v-model="dnumber1">
+      <!-- <input type="text" :value="dnumber1" @input="number1change"> -->
+      <h2>props:{{number2}}</h2>
+      <h2>data:{{dnumber2}}</h2>
+      <input type="text" v-model="dnumber2">
+      <!-- <input type="text" :value="dnumber2" @input="number2change"> -->
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    // 子组件
+    const cpn = {
+      template: "#cpn",
+      props: {
+        number1: {
+          type: Number
+        },
+        number2: {
+          type: Number
+        }
+      },
+      data() {
+        return {
+          dnumber1: this.number1,
+          dnumber2: this.number2
+        }
+      },
+      methods: {
+        number1change(event) {
+          this.dnumber1 = event.target.value
+          this.$emit("number1change", this.dnumber1)
+        },
+        number2change(event) {
+          this.dnumber2 = event.target.value
+          this.$emit("number2change", this.dnumber2)
+        }
+      },
+      watch: {
+        dnumber1(newValue, oldValue) {
+          this.$emit("number1change", newValue)
+        },
+        dnumber2(newValue, oldValue) {
+          this.$emit("number2change", newValue)
+        }
+      }
+    }
+    // 父组件
+    const app = new Vue({
+      el: "#app",
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        num1change(value) {
+          console.log(typeof value)
+          this.num1 = parseInt(value)
+        },
+        num2change(value) {
+          this.num2 = parseInt(value)
+        }
+      },
+      watch: {
+
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+
+</body>
+
+</html>

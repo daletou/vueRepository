@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="test1">{{name}}</div>
+    <ul id="test2">
+        <li v-for="item in movies"> {{item}} </li>
+    </ul>
+    <script src="vue.js"></script>
+    <script>
+        const test1 = new Vue({
+            el: '#test1',
+            data: {
+                name: '小明'
+            }
+        })
+
+        const test2 = new Vue({
+            el: '#test2',
+            data: {
+                movies: ['大话西游', '海王', '大话西游', '海王', '大话西游', '海王']
+            }
+        })
+    </script>
+
+</body>
+
+</html>

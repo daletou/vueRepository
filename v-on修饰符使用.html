@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- .stop修饰符，阻止冒泡 -->
+  <div id="app" @click="divClick">
+    aaaaaaaaaa
+    <button @click.stop="btnClick">按钮1</button>
+
+    <br>
+    <!-- .prevent，阻止默认行为 -->
+    <form action="baidu">
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+    <br>
+    <!-- 键盘修饰符，键盘名 -->
+    <input type="text" @keyup.enter="keyUp">
+
+    <!-- 点击回调只会触发一次 -->
+    <button @click.once="onceClick">只能点击一次的按钮</button>
+  </div>
+
+
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      methods: {
+        btnClick() {
+          console.log("按钮被点击了！")
+        },
+        divClick() {
+          console.log("div被点击了！")
+        },
+        submitClick() {
+          console.log("提交！")
+        },
+        keyUp() {
+          console.log("keyUp！")
+        },
+        onceClick() {
+          console.log("点过了！")
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

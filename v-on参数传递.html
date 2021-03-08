@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1、方法里什么参数都不传，调用方法时可以不加括号 -->
+    <button @click="btnClick1">按钮1</button>
+    <!-- <button @click="btnClick1()">按钮1</button> -->
+
+    <!-- 2、方法里本身需要传一个参数，调用方法时，如果什么参数都不传，vue默认将浏览器产生的event时间对象作为参数传入到方法中 -->
+    <!-- <button @click="btnClick2">按钮2</button>
+    <button @click="btnClick2()">按钮2</button>
+    <button @click="btnClick2(123)">按钮2</button> -->
+    <button @click="btnClick2(message)">按钮2</button>
+
+    <!-- 3、方法定义时，我们需要event，同时又需要其他参数 -->
+    <!-- 在调用方法时，如何手动的获取到浏览器参数的event对象：$event -->
+    <!-- <button @click="btnClick3">按钮3</button> -->
+    <button @click="btnClick3(message,$event)">按钮3</button>
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      methods: {
+        btnClick1() {
+          console.log('按钮1被点击了！')
+        },
+        btnClick2(abc) {
+          console.log('按钮2被点击了！')
+          console.log(abc)
+        },
+        btnClick3(abc, event) {
+          console.log('按钮3被点击了！')
+          console.log(abc, event)
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>

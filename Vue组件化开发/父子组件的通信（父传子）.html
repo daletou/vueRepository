@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <cpn :cmessage='message' :cmovies="movies"></cpn> -->
+    <!-- <cpn></cpn> -->
+    <!-- <cpn :cmessage='message'></cpn> -->
+    <!-- 如果使用驼峰命名法定义属性时 -->
+    <!-- <cpn :my-info='info'></cpn> -->
+
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>{{cmessage}}</h1>
+      <!-- <ul>
+        <li v-for="item in cmovies">{{item}}</li>
+      </ul> -->
+      <ul>
+        <li v-for="item in myInfo">{{item}}</li>
+      </ul>
+    </div>
+  </template>
+
+  <script src="../vue.js"></script>
+  <script>
+    // 父传子：props
+    const cpn = {
+      template: '#cpn',
+      // 1、使用数组
+      // props: ['cmessage', 'cmovies']
+      // 2、类型限制
+      // props: {
+      //   cmessage: String,
+      //   cmovies: Array
+      // }
+      // 3、提供一些默认值
+      props: {
+        cmessage: {
+          type: String,
+          default: 'aaaaaaaaaa'
+          // required: true
+        },
+        // 类型是字符串或者数组时，默认值必须是一个函数
+        cmovies: {
+          type: Array,
+          // default: [] //vue2.5.17
+          default() {
+            return []
+          }
+        },
+        myInfo: {
+          type: Object,
+          default() {
+            return {}
+          }
+        },
+        myMessage: {
+          type: String,
+          default: '呵呵呵'
+        }
+      }
+    }
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: '你好',
+        movies: ['海王', '海尔兄弟', '海贼王'],
+        info: {
+          name: 'cobe',
+          age: 18,
+          high: 188
+        }
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+
+</html>

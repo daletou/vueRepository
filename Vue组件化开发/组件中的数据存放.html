@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>{{title}}</h1>
+      <p>aaaaaaaa</p>
+    </div>
+  </template>
+
+  <script src="../vue.js"></script>
+  <script>
+    Vue.component('cpn', {
+      template: '#cpn',
+      // data属性必须是一个函数，且函数必须有一个返回值，返回一个实例对象
+      data() {
+        return {
+          title: "我是标题"
+        }
+      }
+    })
+    const app = new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+
+</html>

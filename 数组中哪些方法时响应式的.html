@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="btnClick">按钮</button>
+    <ul>
+      <li v-for="item in letters">{{item}}</li>
+    </ul>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        letters: ["A", "B", "C", "D", "E"]
+      },
+      methods: {
+        btnClick() {
+          // 1、push()，在数组最后添加元素
+          // this.letters.push("aaa")
+          // this.letters.push("aaa", "bbb", "ccc")
+
+          // 2、pop()，删除数组中最后一个元素
+          // this.letters.pop()
+
+          // 3、shift()，删除数组中第一个元素
+          // this.letters.shift()
+
+          // 4、unshift()，在数组最前面添加元素
+          // this.letters.unshift("aaa")
+          // this.letters.unshift("aaa", "bbb", "ccc")
+          //...num这种写法叫可变参数，当方法中需要传多个值时，可以使用此种方式：function test(...num){}
+
+          // 5、splice()作用:删除元素/替换元素/插入元素splice(start)start表示从第几个元素开始操作
+          // 删除元素：第二个参数传入你要删除几个元素（如果不传，就删除后面所有的元素）
+          // this.letters.splice(2, 2)
+          // 替换元素：第二个参数传入你要替换几个元素，后面的其他参数是用于替换前面的元素
+          // this.letters.splice(2, 2, 'X', 'Y', 'Z')
+          // 插入元素：第二个参数传入0，并且后面跟上要插入的元素
+          // this.letters.splice(2, 0, 'X', 'Y', 'Z')
+
+          // 6、sort()排序
+
+          // 7、reverse()反转
+          // this.letters.reverse()
+
+          // 注意：通过索引值修改数组中的元素不是响应式的
+          // this.letters[2] = 'bbbb'
+          // 可以通过splice和Vue.set(要修改的对象，索引值，修改后的值)方法进行修改
+          Vue.set(this.letters, 2, 'bbbb')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

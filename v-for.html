@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1、遍历数组 -->
+    <ul>
+      <li v-for="name in names" :key="name">{{name}}</li>
+      <li v-for="(name,index) in names" :key="name">{{index}}-{{name}}</li>
+    </ul>
+    <!-- 2、遍历对象 -->
+    <ul>
+      <!-- 遍历对象过程中，如果只需要一个值，那么这个值是value -->
+      <li v-for="value in info">{{value}}</li>
+      <!-- 遍历对象过程中，如果需要key和value，那么格式：(value,key) -->
+      <li v-for="(value,key) in info">{{value}}-{{key}}</li>
+      <!-- 遍历对象过程中，如果需要key和value和index，那么格式：(value,key,index) -->
+      <li v-for="(value,key,index) in info">{{value}}-{{key}}-{{index}}</li>
+    </ul>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        names: ["张三", "李四", "王五"],
+        info: {
+          name: "张三",
+          age: 18,
+          high: 188
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

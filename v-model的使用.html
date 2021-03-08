@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-model实现数据双向绑定 -->
+    <!-- 1、input的使用 -->
+    <input type="text" v-model="message">{{message}}
+    <!-- <input type="text" v-bind:value="message" v-on:input="message=$event.target.value"> -->
+    <h2>{{message}}</h2>
+
+    <!-- 2、radio的使用 -->
+    <label for="man">
+      <input type="radio" id="man" value="男" v-model="sex">男
+    </label>
+    <label for="woman">
+      <input type="radio" id="woman" value="女" v-model="sex">女
+    </label>
+
+    <!-- 3、checkbox的使用 -->
+    <!-- (1)单个勾选框 -->
+    <br>
+    <label for="agree">
+      <input type="checkbox" name="" id="agree" v-model="isAgree">同意协议
+    </label>
+    <h2>您选择的是：{{isAgree}}</h2>
+    <button :disabled="!isAgree">下一步</button>
+    <!-- (2)多个勾选框 -->
+    <br>
+    请选择您的爱好：
+    <input type="checkbox" name="" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" name="" value="足球" v-model="hobbies">足球
+    <input type="checkbox" name="" value="羽毛球" v-model="hobbies">羽毛球
+    <h2>您的爱好是：{{hobbies}}</h2>
+
+    <!-- 4、select的使用 -->
+    <!-- (1)单个勾选框 -->
+    <br>
+    <select v-model="fruit">喜欢的水果：
+      <option value="草莓">草莓</option>
+      <option value="橙子">橙子</option>
+      <option value="樱桃">樱桃</option>
+      <option value="榴莲">榴莲</option>
+    </select>
+    <h2>您喜欢的水果有：{{fruit}}</h2>
+    <!-- (2)多个勾选框 -->
+    <br>
+    <select v-model="fruits" multiple>喜欢的水果：
+      <option value="草莓">草莓</option>
+      <option value="橙子">橙子</option>
+      <option value="樱桃">樱桃</option>
+      <option value="榴莲">榴莲</option>
+    </select>
+    <h2>您喜欢的水果有：{{fruits}}</h2>
+
+    <!-- 5、值绑定:v-bind在input中的使用 -->
+    <br>
+    <label :for="item" v-for="item in newHobbies">
+      <input type="checkbox" :value="item" :id="item" v-model="checkHobbies">{{item}}</input>
+    </label>
+    <h2>您的爱好是：{{checkHobbies}}</h2>
+
+    <!-- 6、修饰符 -->
+    <!-- (1)lazy -->
+    <br>
+    <input type="text" v-model.lazy="message">
+    <h2>{{message}}</h2>
+    <br>
+    <!-- (2)number -->
+    <br>
+    <input type="number" v-model.number="number">
+    <h2>{{typeof number}}-{{number}}</h2>
+
+    <!-- (3)trim -->
+    <br>
+    <input type="text" v-model.trim="message">
+    <h2>{{message}}</h2>
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: "你好啊",
+        sex: "男",
+        isAgree: false,
+        hobbies: [],
+        fruit: "草莓",
+        fruits: [],
+        newHobbies: ['篮球', '乒乓球', '台球', '羽毛球'],
+        checkHobbies: [],
+        number: 0
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button @click='eat'>吃饭</button>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const name='cobe',age=20,high=188
+    const obj = {
+      name,age,high
+    }
+    console.log(obj)
+
+    const app = new Vue({
+      el:'#app',
+      methods:{
+        eat(){
+          console.log('eat')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

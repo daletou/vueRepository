@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in movies" class="{active:isActive}" @click="changeColor(index)">{{item}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['大话西游', '海王', '大话西游', '海王', '大话西游', '海王'],
+                isActive: false
+            },
+            methods: {
+                changeColor: function (index) {
+                    this.isActive = !this.isActive
+                    console.log(index);
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

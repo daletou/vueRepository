@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <a :href="aHref">
+      <img :src="imgUrl" alt="">
+    </a>
+  </div>
+
+  <div id="app1">
+    <h2 :class="{active: isActive}">{{message}}</h2>
+    <button @click="btnClick">变色</button>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa3.att.hudong.com%2F65%2F38%2F16300534049378135355388981738.jpg&refer=http%3A%2F%2Fa3.att.hudong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1615109638&t=506c3a5eb0f99e5e3128514a1a78f1c6',
+        aHref: 'https://www.baidu.com/'
+      }
+    })
+
+    /* 动态绑定class-对象语法 */
+    const app1 = new Vue({
+      el: '#app1',
+      data: {
+        message: '你好',
+        isActive: true
+      },
+      methods: {
+        btnClick: function () {
+          this.isActive = !this.isActive
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 编程范式：命令式编程/声明式编程 -->
+  <!-- 编程范式：面向对象编程（第一公民：对象）/函数式编程（第一公民：函数） -->
+  <!-- 高阶函数：filter/map/reduce -->
+  <script>
+    const nums = [10, 20, 111, 222, 333, 40, 50]
+    /**
+     * 1、filter函数的使用
+     * filter中的回调函数有一个要求： 必须返回一个boolean值
+     * true： 当返回true时， 函数内部会自动将这次回调的参数n加入到数组中
+     * false： 返回false时， 函数内部会过滤掉这次的参数n
+     */
+    // 要求：将数组中小于100的数取出，重新组成一个新的数组
+    let newNums = nums.filter(function (n) {
+      return n < 100
+    })
+    console.log(newNums)
+    /**
+     * 2、map函数的使用
+     */
+    // 要求：将数组中每个数字都乘以2
+    let newNums2 = newNums.map(function (n) {
+      return n * 2
+    })
+    console.log(newNums2)
+    /**
+     * 3、reduce函数的使用
+     * reduce作用对数组中所有的内容进行汇总
+     * reduce(参数一(函数(previousValue代表上一个值,n是这次的值))，参数二（默认值0）)
+     */
+    let newNumber3 = newNums2.reduce(function (previousValue, n) {
+      return previousValue + n
+    }, 0)
+    console.log(newNumber3)
+
+    //高阶函数的使用汇总
+    let total = nums.filter(function (n) {
+      return n < 100
+    }).map(function (n) {
+      return n * 2
+    }).reduce(function (previousValue, n) {
+      return previousValue + n
+    }, 0)
+    console.log(total);
+
+    //高阶函数的使用汇总(箭头函数的使用)
+    let total1 = nums.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n)
+    console.log(total1);
+  </script>
+</body>
+
+</html>
