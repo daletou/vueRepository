@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+ </head>
+
+ <body>
+   <!-- 搜索网站   1、GitHub     2、Stack Overflow -->
+   <!-- 目的：父组件替换子组件插槽的标签，但是内容由子组件来提供 -->
+   <div id="app">
+     <cpn></cpn>
+     <!-- 1、以“-”连接 -->
+     <cpn>
+       <template slot-scope="slot">
+         <span>{{slot.data.join(' - ')}}</span>
+       </template>
+     </cpn>
+     <!-- 2、以“*”连接 -->
+     <cpn>
+       <template slot-scope="slot">
+         <span>{{slot.data.join(' * ')}}</span>
+       </template>
+     </cpn>
+   </div>
+
+   <template id="cpn">
+     <div>
+       <h2>{{message}}</h2>
+       <slot :data="names">
+         <ul>
+           <li v-for="item in names">{{item}}</li>
+         </ul>
+       </slot>
+     </div>
+   </template>
+   <script src="../vue.js"></script>
+   <script>
+     const app = new Vue({
+       el: "#app",
+       components: {
+         cpn: {
+           template: "#cpn",
+           data() {
+             return {
+               message: "我是子组件",
+               names: ['aaaaaa', 'bbbbbbbbb', 'ccccccccccc']
+             }
+           }
+         }
+       }
+     })
+   </script>
+ </body>
+
+ </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 目的：让我们封装的组件具有更强的扩展性 -->
+  <div id="app">
+    <cpn></cpn>
+
+    <cpn><button>我是插槽1的按钮</button></cpn>
+
+    <cpn>
+      <!-- 3、如果有多个值，同时放入到组件进行替换时，一起作为替换元素 -->
+      <h2>我是插槽2</h2>
+      <button>我是插槽2的按钮</button>
+    </cpn>
+
+    <cpn>
+      <h2>我是插槽3</h2>
+    </cpn>
+
+  </div>
+  <template id="cpn">
+    <div>
+      <h1>{{message}}</h1>
+      <!-- 1、插槽的基本使用 -->
+      <!-- <slot></slot> -->
+
+      <slot>
+        <!-- 2、插槽的默认值 -->
+        <button>我是组件的按钮</button>
+      </slot>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {
+          message: "我是子组件"
+        }
+      }
+    }
+    const app = new Vue({
+      el: "#app",
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+
+</html>
