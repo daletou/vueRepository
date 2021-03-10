@@ -13,7 +13,7 @@ console.log(num1)
 console.log(height)
 
 // 3、导入export的function/class
-import { mul, Person } from '.aaa.js'
+import { mul, Person } from './aaa.js'
 console.log(mul(30, 50))
 const p = new Person()
 p.run()
@@ -23,5 +23,5 @@ import argu from './aaa.js'
 argu('你好啊')
 
 // 5、统一全部导入
-import * as aaa from './aaa'
+import * as aaa from './aaa.js'
 console.log(aaa.flag)

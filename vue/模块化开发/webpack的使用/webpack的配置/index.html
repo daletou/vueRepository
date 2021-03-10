@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- webpack.config.js是将需要打包的东西做一个映射 -->
+  <!-- 1、因为path是需要依赖的包，所有需要安装包。项目中一旦需要用到node相关的东西，最好提前把package.json建好初始化命令：npm init -->
+  <!-- 2、如果package.json里需要依赖其他东西的时候，一般会执行命令：npm install -->
+  <!-- 3、将npm run build命令与webpack命令映射起来：此时在package.json中的脚本scripts中加入想要加入的命令，例如build映射webpack -->
+  <!--    写到此处时，项目会优先在本地查找webpack -->
+  <!-- 4、一般开发时需要在本地安装一个webpack，分为开发时依赖和运行时依赖，需要开发时依赖时要加一个终端命令：npm install webpack@3.6.0 --save-dev   -->
+  <script src="../dist/bundle.js"></script>
+</body>
+
+</html>
