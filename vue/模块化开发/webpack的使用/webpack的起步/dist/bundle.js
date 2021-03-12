@@ -70,11 +70,13 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mathUtils_js__ = __webpack_require__(1);
+// 使用ES6的模块化规范
 
 
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__mathUtils_js__["a" /* add */])(20, 30))
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__mathUtils_js__["b" /* mul */])(20, 30))
 
+// 使用CommonJs的模块化规范
 const { name, age, high } = __webpack_require__(2)
 console.log(name)
 console.log(age)
@@ -95,7 +97,7 @@ function mul(num1, num2) {
   return num1 * num2
 }
 
-// ES6的导出
+// 使用ES6的模块化规范
 
 
 
@@ -107,7 +109,7 @@ const name = 'Joy'
 const age = 18
 const high = 1.88
 
-// CommonJs的导出
+// 使用CommonJs的模块化规范
 module.exports = { name, age, high }
 
 

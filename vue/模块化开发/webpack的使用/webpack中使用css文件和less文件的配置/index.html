@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 这是我在使用webpack打包css时，出现的一个错误，导致css无法打包，原因是 css-loader 和 style-loader 版本过高 -->
+  <!-- 现在我手动下调了一下版本
+  "css-loader": "^3.3.0",
+  "style-loader": "^1.0.0" -->
+  <!-- 然后再命令行中 依次输入：
+  npm install
+  npm dev -->
+  <h1>你好</h1>
+  <script src="../dist/bundle.js"></script>
+</body>
+
+</html>
