@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 1、font-class引用 -->
+  <!-- 优点：兼容性良好，支持ie8+，及所有现代浏览器；相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。 -->
+  <!-- 缺点：不支持多色，只支持单色 -->
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.css">
+  <!-- 2、unicode引用 -->
+  <!-- 优点：兼容性最好，支持ie6+，及所有现代浏览器。 -->
+  <!-- 缺点：不支持多色，只支持单色；语义不明确 -->
+  <style>
+    @font-face {
+      font-family: 'iconfont';  /* project id 2428817 */
+      src: url('//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.eot');
+      src: url('//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.eot?#iefix') format('embedded-opentype'),
+      url('//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.woff2') format('woff2'),
+      url('//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.woff') format('woff'),
+      url('//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.ttf') format('truetype'),
+      url('//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.svg#iconfont') format('svg');
+    }
+  </style>
+  <!-- 3、symbol引用 加入通用css代码（引入一次就行）-->
+  <!-- 优点：支持多色图标了，不再受单色限制。 -->
+  <!-- 缺点：通过一些技巧，支持像字体那样，通过font-size,color来调整样式。
+            兼容性较差，支持 ie9+,及现代浏览器。
+            浏览器渲染svg的性能一般，还不如png。 -->
+  <style type="text/css">
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+</style>
+<script src="//at.alicdn.com/t/font_2428817_bw9dbk8d4wd.js"></script>
+</head>
+<body>
+  <!-- 1、font-class引用 -->
+  <i class="iconfont icon-shanchu" style="color: red;font-size: 36px;"></i>
+
+  <!-- 2、unicode引用 -->
+  <i class="iconfont">&#xe98c;</i>
+
+  <!-- 3、symbol引用 -->
+  
+  <svg class="icon" aria-hidden="true">
+    <use xlink:href="#icon-qicheguanli"></use>
+  </svg>
+
+
+  <!-- 总结：与传统写背景图片的方式有什么区别 -->
+  <!-- iconfont不会引入http请求，页面响应速度快，图片放大也不会模糊，可以修改大小、颜色 -->
+</body>
+</html>

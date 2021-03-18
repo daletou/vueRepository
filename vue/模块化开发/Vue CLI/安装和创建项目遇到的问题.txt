@@ -1,0 +1,28 @@
+一、安装vue cli3：npm install -g @vue/cli
+安装时遇到安装失败的解决办法：
+(1)npm clean cache -force
+(2)删除C:/文件夹下面的npm-cache
+
+二、拉取 2.x 模板 (旧版本)：npm install -g @vue/cli-init
+
+三、用cli2初始化项目：vue init webpack my-project（项目名）
+
+四、PowerShell中创建vue项目提示无法加载文件？
+以管理员身份运行PowerShell
+执行：get-ExecutionPolicy，如果显示Restricted，表示状态是禁止的
+执行：set-ExecutionPolicy RemoteSigned
+选择Y
+
+五、node-sass 安装失败的各种坑
+主要是windows平台缺少编译环境
+1、npm cache clean --force
+2、先运行： npm install -g node-gyp
+3、然后以管理员身份运行PowerShell：运行 npm install --global --production windows-build-tools 可以自动安装跨平台的编译器：gym注：第二句执行下载好msi文件卡着不懂不安装 ， 手动去对应的目录底下安装一下 在执行一边。
+4、保存后 删除之前安装失败的包(第一次安装请跳过此步)
+npm uninstall node-sass
+5、重新安装
+npm install node-sass
+
+
+
+
