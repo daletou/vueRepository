@@ -1,4 +1,8 @@
-﻿一、安装vue cli3：npm install -g @vue/cli
+﻿英文解释
+preset配置
+manually手动的
+
+一、安装vue cli3：npm install -g @vue/cli
 安装时遇到安装失败的解决办法：
 (1)npm clean cache -force
 (2)删除C:/文件夹下面的npm-cache
@@ -28,6 +32,29 @@ npm install node-sass    或者npm rebuild node-sass
 
 六、npm install 遇到问题（暂时没遇到过）
 该问题的原因是chromedriver的部分文件被国内网络给墙掉了，无法下载完整的chromedirver包
+
+
+七、
+windows环境，安装vue-cli 脚手架。
+安装成功，但是执行 vue -V 报错了。
+报错信息：无法加载文件 C:\Users\Administrator\AppData\Roaming\npm\vue.ps1，因为在此系统中禁止执行脚本
+原因分析：禁止执行脚本，那就打开权限执行脚本嘛
+解决方案：
+1.	打开 powerShell 用管理员身份运行
+2.	输入命令： set-ExecutionPolicy RemoteSigned 
+3.	输入A
+4.	再输入 vue -V (搞定)
+
+八、创建项目帮助文档地址
+https://blog.csdn.net/weixin_51958206/article/details/110475774
+
+九、修改脚手架配置的三种方法
+Vue cli3设计原则：0配置
+1、	vue ui图形化界面
+2、	node_modules里找
+3、	自定义一个配置文件
+在项目中添加一个文件，文件名必须是：vue.config.js，内容module.exports = {}
+
 
 
 
