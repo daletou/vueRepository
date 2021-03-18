@@ -44,3 +44,5 @@ new Vue({
     App,
   },
 })
+
+document.write('<span style="color:white;">哈哈哈</span>')

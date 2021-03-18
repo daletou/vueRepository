@@ -1,7 +1,5 @@
 // 去node里去找path这个包
 const path = require('path')
-// v15版的vue-loader配置需要加个VueLoaderPlugin
-// const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   // 入口

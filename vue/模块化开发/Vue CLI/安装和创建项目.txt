@@ -1,0 +1,7 @@
+1、安装vue cli3：npm install -g @vue/cli
+安装时遇到安装失败的解决办法：
+(1)npm clean cache -force
+(2)删除C:/文件夹下面的npm-cache
+2、拉取 2.x 模板 (旧版本)：npm install -g @vue/cli-init
+3、用cli2初始化项目：vue init webpack my-project（项目名）
+4、

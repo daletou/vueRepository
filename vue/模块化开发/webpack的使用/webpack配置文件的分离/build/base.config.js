@@ -2,7 +2,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   // 入口
@@ -10,9 +9,8 @@ module.exports = {
   // 出口
   output: {
     // path需要动态获取path，这个path必须是一个绝对路径
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js',
-    // publicPath: 'dist/',
   },
   module: {
     rules: [
@@ -20,19 +18,6 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      // {
-      //   test: /\.(png|jpg|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         // 当加载的图片小于limit时，会将图片编译成base64的字符串形式
-      //         // 当加载的图片大于limit时，需要使用file-loader模块进行加载，此时得把url-loader注释掉
-      //         limit: 8192,
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
@@ -84,13 +69,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
-    // 3、代码压缩丑化：npm install uglifyjs-webpack-plugin@1.1.1 --save-dev
-    // 开发的时候不要使用，打包才需要配置
-    new UglifyjsWebpackPlugin(),
   ],
-  // 搭建本地服务器 npm install webpack-dev-server@2.9.3 --save-dev
-  devServer: {
-    contentBase: './dist', // 服务于哪个文件夹
-    inline: true, // 是否需要实时监听
-  },
 }
