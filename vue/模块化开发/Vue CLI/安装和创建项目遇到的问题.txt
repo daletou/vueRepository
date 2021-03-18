@@ -1,4 +1,4 @@
-一、安装vue cli3：npm install -g @vue/cli
+﻿一、安装vue cli3：npm install -g @vue/cli
 安装时遇到安装失败的解决办法：
 (1)npm clean cache -force
 (2)删除C:/文件夹下面的npm-cache
@@ -16,12 +16,18 @@
 五、node-sass 安装失败的各种坑
 主要是windows平台缺少编译环境
 1、npm cache clean --force
-2、先运行： npm install -g node-gyp
-3、然后以管理员身份运行PowerShell：运行 npm install --global --production windows-build-tools 可以自动安装跨平台的编译器：gym注：第二句执行下载好msi文件卡着不懂不安装 ， 手动去对应的目录底下安装一下 在执行一边。
+以下所有都以管理员身份在cmd中运行
+2、先运行：npm install -g node-gyp
+3、再运行：npm install --global --production windows-build-tools 可以自动安装跨平台的编译器：gym注：第二句执行下载好msi文件卡着不懂不安装 ， 手动去对应的目录底下安装一下 在执行一边。
+以上三步之后启动项目再报错，再执行以下两步
 4、保存后 删除之前安装失败的包(第一次安装请跳过此步)
 npm uninstall node-sass
 5、重新安装
-npm install node-sass
+npm install node-sass    或者npm rebuild node-sass
+
+
+六、npm install 遇到问题（暂时没遇到过）
+该问题的原因是chromedriver的部分文件被国内网络给墙掉了，无法下载完整的chromedirver包
 
 
 
