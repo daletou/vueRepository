@@ -1,9 +1,17 @@
 // 配置路由相关的信息
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import Home from '../components/Home.vue'
-import About from '../components/About.vue'
-import User from '../components/User.vue'
+// import Home from '../components/Home.vue'
+// import About from '../components/About.vue'
+// import User from '../components/User.vue'
+
+// 路由的懒加载写法
+const Home = () => import('../components/Home.vue')
+const HomeNews = () => import('../components/HomeNews.vue')
+const HomeMessage = () => import('../components/HomeMessage.vue')
+const About = () => import('../components/About.vue')
+const User = () => import('../components/User.vue')
+const Profile = () => import('../components/Profile.vue')
 
 // 解决一个路径重复点击浏览器报错问题（方法二）
 const originalPush = VueRouter.prototype.push
@@ -29,23 +37,57 @@ const routes = [
   // 配置路由的默认值
   {
     // path: '', “/”不加也可以
-    path: '/',
+    // path: '/',
+    path: '',
     redirect: '/home',
   },
   {
     // （2）配置路由映射：组件和路径的映射关系
     path: '/home',
     component: Home,
+    children: [
+      {
+        path: '',
+        redirect: 'news'
+      },
+      {
+        path: 'news',
+        component: HomeNews
+      },
+      {
+        path: 'message',
+        component: HomeMessage
+      }
+    ],
+    meta: {
+      title: '首页'
+    }
   },
   {
     path: '/about',
     component: About,
+    meta: {
+      title: '关于'
+    }
   },
-  // 动态绑定一个路由
+
+  // 传递参数的方式：params和query
+  // 1、动态绑定一个路由，通过params获取
   {
     path: '/user/:userId',
     component: User,
+    meta: {
+      title: '用户'
+    }
   },
+  // 2、通过query获取
+  {
+    path: '/profile',
+    component: Profile,
+    meta: {
+      title: '档案'
+    }
+  }
 ]
 const router = new VueRouter({
   // 配置路由和组件之间的映射关系
@@ -54,6 +96,15 @@ const router = new VueRouter({
   mode: 'history',
   // 修改活跃的类名
   linkActiveClass: 'active',
+})
+
+// 全局导航守卫
+router.beforeEach((to, from, next) => {
+  // 从from跳到to
+  document.title = to.matched[0].meta.title
+  console.log(to)
+  // 必须执行此方法
+  next()
 })
 
 // 3、将router对象传入vue实例中
