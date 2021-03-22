@@ -1,5 +1,11 @@
 ﻿英文翻译：
 profile 用户档案
+meta  元数据（描述数据的数据）
+guard  守卫
+hook  钩子
+patch  打补丁
+
+
 
 
 

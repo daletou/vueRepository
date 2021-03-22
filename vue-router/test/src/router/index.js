@@ -48,27 +48,32 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: 'news'
+        redirect: 'news',
       },
       {
         path: 'news',
-        component: HomeNews
+        component: HomeNews,
       },
       {
         path: 'message',
-        component: HomeMessage
-      }
+        component: HomeMessage,
+      },
     ],
     meta: {
-      title: '首页'
-    }
+      title: '首页',
+    },
   },
   {
     path: '/about',
     component: About,
     meta: {
-      title: '关于'
-    }
+      title: '关于',
+    },
+    // 路由独享守卫
+    beforeEnter: (to, from, next) => {
+      console.log('beforeEnter')
+      next()
+    },
   },
 
   // 传递参数的方式：params和query
@@ -77,17 +82,17 @@ const routes = [
     path: '/user/:userId',
     component: User,
     meta: {
-      title: '用户'
-    }
+      title: '用户',
+    },
   },
   // 2、通过query获取
   {
     path: '/profile',
     component: Profile,
     meta: {
-      title: '档案'
-    }
-  }
+      title: '档案',
+    },
+  },
 ]
 const router = new VueRouter({
   // 配置路由和组件之间的映射关系
@@ -99,12 +104,18 @@ const router = new VueRouter({
 })
 
 // 全局导航守卫
+// 1、前置守卫（guard）
 router.beforeEach((to, from, next) => {
   // 从from跳到to
   document.title = to.matched[0].meta.title
-  console.log(to)
+  console.log('beforeEach')
   // 必须执行此方法
   next()
+})
+
+// 2、后置钩子（hook）
+router.afterEach((to, from) => {
+  console.log('afterEach')
 })
 
 // 3、将router对象传入vue实例中

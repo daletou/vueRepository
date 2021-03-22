@@ -28,7 +28,15 @@
     <button @click="userClick">我的</button>
     <button @click="profileClick">档案</button>
     
-    <router-view></router-view>
+    <!-- keep-alive是Vue内置的一个组件，可以使被包含的组件保留状态，或者避免重新渲染 -->
+    <!-- router-view也是一个组件，如果直接被包在keep-alive里面，所有路径匹配到的视图组件都会被缓存 -->
+    <!-- 需求：点击“档案”的按钮时，需要被频繁的重新创建新的组件 -->
+    <!-- include：只有匹配的组件会被缓存 -->
+    <!-- exclude：任何匹配的组件都不会被缓存 -->
+    <!-- 强调：这里内容之间逗号前后不要加空格 -->
+    <keep-alive exclude="Profile,User">
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
