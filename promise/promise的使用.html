@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 什么情况下会用到Promise？
+    // 一般情况下是有异步操作时，使用Promise对这个异步请求进行封装
+    new Promise((resolve, reject) => {
+      // resolve()
+      setTimeout(() => {
+        // 成功的时候调用resolve
+        resolve("Hello World")
+        // 失败的时候调用reject
+        reject("error message")
+      }, 1000)
+    }).then(data => { // 成功
+      console.log(data)
+    }).catch(error => { // 失败
+      console.log(error)
+    })
+    // 以上被称为链式编程 
+
+    // 另外一种写法
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // 成功的时候调用resolve
+        resolve("Hello World")
+        // 失败的时候调用reject
+        reject("error message")
+      }, 1000)
+    }).then(data => { // 成功
+      console.log(data)
+    }, error => { // 失败
+      console.log(error)
+    })
+  </script>
+</body>
+
+</html>

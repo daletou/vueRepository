@@ -1,0 +1,23 @@
+网络请求模块
+
+axios：ajax i/o system
+
+1、功能特点
+在浏览器中发送XMLHTTPRequests请求
+可以在node.js中发送http请求
+支持Promise API
+支持拦截请求和响应
+转换请求和响应数据
+等等
+
+2、浏览器支持
+Chrome	   Firefox	 Safari	   Opera	    Edge	    IE
+Latest ✔	Latest ✔	Latest ✔	Latest ✔	Latest ✔	8+ ✔
+
+3、安装
+npm install axios --save
+
+4、模拟网络请求地址
+httpbin.org
+
+
