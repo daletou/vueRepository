@@ -20,4 +20,10 @@ npm install axios --save
 4、模拟网络请求地址
 httpbin.org
 
+5、Mock.js
+生成随机数据，拦截 Ajax 请求
+
+安装mockjs
+npm install mockjs --save-dev
+
 

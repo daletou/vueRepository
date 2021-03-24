@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import axios from 'axios'
 
 Vue.config.productionTip = false
 
@@ -8,36 +7,20 @@ new Vue({
   render: (h) => h(App),
 }).$mount('#app')
 
-// const instance1 = axios.create({
-//   baseURL:
-//     'http://192.168.163.210:8090/IPMS_PublicService/cmscp/neusoft/majordepartment/list ',
-//   timeout: 1000,
-//   method: 'post',
-//   data: {
-//     departmentName: 'aaa',
-//     areaName: 'bbb',
-//     approvalStatus: 1,
-//     start: 0,
-//     size: 10,
-//   },
-// })
+// 调用封装好的request模块
+import { request } from './network/request'
 
-// instance1({
-//   url: 'post',
-// }).then((res) => {
-//   console.log(res)
-// })
-;(axios.defaults.baseURL = '/api'),
-  axios({
-    url: '/',
-    method: 'post',
-    data: {
-      departmentName: 'aaa',
-      areaName: 'bbb',
-      approvalStatus: 1,
-      start: 0,
-      size: 10,
-    },
-  }).then((res) => {
-    console.log(res)
-  })
+// request(
+//   {
+//     url: 'post',
+//     method: 'post',
+//   },
+//   (res) => console.log(res),
+//   (err) => console.log(err)
+// )
+
+request({
+  url: 'get',
+})
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err))
