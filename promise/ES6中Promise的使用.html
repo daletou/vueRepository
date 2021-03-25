@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 什么情况下会用到Promise？
+    // 一般情况下是有异步操作时，使用Promise对这个异步请求进行封装
+    // resolve, reject本身它们又是函数
+    // Promise将网络请求的代码和处理的代码做了分离
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // 成功的时候调用resolve
+        resolve("Hello World")
+        // 失败的时候调用reject
+        reject("error message")
+      }, 1000)
+    }).then(data => { // 成功
+      console.log(data)
+    }).catch(error => { // 失败
+      console.log(error)
+    })
+
+
+    // Primise链式编程
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("aaa")
+      }, 1000)
+    }).then(res => {
+      // 对第一次结果进行处理
+      return Promise.resolve(res + '111')
+    }).then(res => {
+      //对第二次结果进行处理
+      return Promise.resolve(res + '222')
+    }).then(res => {
+      console.log(res)
+    })
+
+    // 省略掉Promise.resolve，是上面Primise链式编程的简写
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("aaa")
+      }, 1000)
+    }).then(res => {
+      // 对第一次结果进行处理
+      return res + '111'
+    }).then(res => {
+      //对第二次结果进行处理
+      return res + '222'
+    }).then(res => {
+      console.log(res)
+    })
+
+    // Promise的all方法使用
+    Promise.all([
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('result1')
+        }, 1000)
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('result2')
+        }, 1000)
+      })
+    ]).then(res => {
+      console.log(res)
+    })
+  </script>
+</body>
+
+</html>

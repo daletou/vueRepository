@@ -12,6 +12,18 @@
     <p>--------- 这是App：演示getters相关信息------------</p>
     <!-- 获取count的平方 -->
     <h2>{{$store.getters.powerCount}}</h2>
+
+    <p>--------- 这是App：演示info对象的内容是否是响应式的------------</p>
+    <h2>{{$store.state.info}}</h2>
+    <button @click="updateInfo">修改信息</button>
+
+    <p>--------- 这是App：演示modules------------</p>
+    <h2>{{$store.state.a.name}}</h2>
+    <button @click="updateName">修改名字</button>
+    <h2>{{$store.getters.fullName}}</h2>
+    <h2>{{$store.getters.fullName2}}</h2>
+    <h2>{{$store.getters.fullName3}}</h2>
+    <button @click="asyncUpdateName">异步修改名字</button>
     
     <p>--------- 这是子组件------------</p>
     <hello-vuex/>
@@ -21,6 +33,7 @@
 <script>
 
 import HelloVuex from './components/HelloVuex'
+import { INCREMENT } from './store/mutations-types'
 
 export default {
   name: 'App',
@@ -33,7 +46,8 @@ export default {
     incrClick() {
       console.log('incrClick')
       // 通过mutation更新，传入的参数：事件类型
-      this.$store.commit('increment')
+      // this.$store.commit('increment')
+      this.$store.commit(INCREMENT) // 定义完类型常量最后，就可以使用类型常量INCREMENT了
     },
     decrClick() {
       console.log('decrClick')
@@ -59,6 +73,28 @@ export default {
         student,
         high: 1.88
       })
+    },
+    updateInfo() {
+      // this.$store.commit('updateInfo')
+      // this.$store.dispatch('aUpdateInfo', '我是携带的信息')
+      // 此方法不够优雅
+      // this.$store.dispatch('aUpdateInfo', {
+      //   message: '我是携带的信息',
+      //   success: ()=>{
+      //     console.log("里面已经完成了")
+      //   }
+      // })
+      // 优雅的解决办法
+      this.$store.dispatch('aUpdateInfo', '我是携带的信息').then((res)=>{
+        console.log("外面接收成功")
+        console.log(res)
+      })
+    },
+    updateName() {
+      this.$store.commit('updateName', 'lisi')
+    },
+    asyncUpdateName() {
+      this.$store.dispatch('aUpdateName')
     }
   },
   components: {
